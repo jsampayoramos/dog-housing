@@ -1,0 +1,34 @@
+.Drawer {
+    max-width: 100%;
+    width: 250px;
+    position: fixed;
+    height: 400px;
+    top: 0;
+    left: 0;
+    background-color: black;
+    transition: transform 300ms ease-out;
+}
+
+.OpenDrawer {
+    transform: translateX(0);
+}
+
+.CloseDrawer {
+    transform: translateX(-100%);
+}
+
+.Drawer ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    height: 100%;
+}
+
+.RegistrationContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto 0 10px 0;
+}

@@ -1,0 +1,17 @@
+.ToggleButton {
+    cursor: pointer;
+    z-index: 100;
+}
+
+.ToggleButton div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 8px 0;
+}
+
+@media only screen and (min-width: 700px) {
+    .ToggleButton {
+        display: none;
+    }
+}
