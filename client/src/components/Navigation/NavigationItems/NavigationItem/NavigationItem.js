@@ -9,6 +9,7 @@ const navigationItem = props => {
             to='#'
             className={styles.NavigationItem}
             style={props.style}
+            onClick={props.action}
         >
             {props.children}
         </NavLink>

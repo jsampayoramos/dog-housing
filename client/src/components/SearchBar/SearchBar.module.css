@@ -1,0 +1,94 @@
+.SearchBar {
+    min-width: 700px;
+    background-color: white;
+    height: 50px;
+    margin-top: 7rem;
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.DatePickerClass {
+    height: 35px;
+    border: none;
+    width: 100px;
+    padding-left: 20px;
+}
+
+.DatePickerClass:focus {
+    outline: none;
+}
+
+.LocationContainer {
+    width: 45%;
+}
+
+.LocationContainer, .CheckContainer {
+    border-right: 1px solid lightgrey;
+}
+
+.AnimalsContainer select {
+    padding-left: 20px;
+}
+
+.SearchBar svg {
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 800px) {
+    .SearchBar {
+        flex-direction: column;
+        height: 200px;
+        min-width: 250px;
+    }
+
+    .LocationContainer, .CheckContainer {
+        border-bottom: 1px solid lightgrey;
+        border-right: none;
+        width: 100%;
+    }
+
+    .LocationContainer, .CheckContainer, .AnimalsContainer, .LocationContainer input {
+        display: flex;
+        justify-content: center;
+    }
+
+    .AnimalsContainer {
+        width: 100%;
+    }
+
+    .DatePickerClass {
+        padding-left: 0;
+    }
+
+    .AnimalsContainer select {
+        padding-left: 0;
+        text-align: center;
+        text-align-last: center;
+    }
+
+    .AnimalsContainer select option {
+        width: 30px !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    .LocationContainer input::placeholder {
+        text-align: center;
+    }
+
+    .DatePickerClass {
+        text-align: center;
+        width: 100%;
+    }
+
+    .CheckContainer {
+        width: 100%;
+    }
+
+    .SearchBar svg {
+        margin: auto;
+    }
+}

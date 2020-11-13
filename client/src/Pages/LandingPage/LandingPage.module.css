@@ -2,4 +2,7 @@
     background-image: url('../../assets/images/landingPage_background.jpg');
     background-size: cover;
     min-height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
 }

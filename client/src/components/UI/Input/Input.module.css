@@ -1,0 +1,7 @@
+.Input:focus, .Select:focus {
+    outline: none;
+}
+
+.Input, .Select {
+    width: 100%;
+}
