@@ -77,10 +77,10 @@ const SearchBar = props => {
                 />
             </div>
             <Icon icon='search' size='2x' style={{
-                color: 'white',
-                backgroundColor: 'rgb(0, 176, 240)',
-                padding: '8px',
-                borderRadius: '15px'
+                // color: 'white',
+                // backgroundColor: 'rgb(0, 176, 240)',
+                // padding: '8px',
+                // borderRadius: '15px'
             }}/>
         </div>
     );
