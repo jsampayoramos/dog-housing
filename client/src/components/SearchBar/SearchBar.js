@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
 
 import Input from '../UI/Input/Input';
 import Icon from '../UI/Icon/Icon';
@@ -18,18 +17,17 @@ const SearchBar = props => {
             value:''
         },
         checkIn: {
-            type: 'input',
+            type: 'date',
             config: {
-                type: 'date',
-                placeholder: 'Check-in'
+                placeholderText: 'Check-in'
             },
             value:''
         },
         checkOut: {
-            type: 'input',
+            type: 'date',
             config: {
                 type: 'date',
-                placeholder: 'Check-in'
+                placeholderText: 'Check-in'
             },
             value:''
         },
@@ -58,10 +56,18 @@ const SearchBar = props => {
                 />
             </div>
             <div className={styles.CheckContainer}>
-                <DatePicker className={styles.DatePickerClass} placeholderText='Check-in' />
+                <Input
+                    elementType={searchBarState.checkIn.type}
+                    className={styles.DatePickerClass}
+                    config={searchBarState.checkIn.config}
+                />
             </div>
             <div className={styles.CheckContainer}>
-                <DatePicker className={styles.DatePickerClass} placeholderText='Check-out' />
+                <Input
+                    elementType={searchBarState.checkOut.type}
+                    className={styles.DatePickerClass}
+                    config={searchBarState.checkOut.config}
+                />
             </div>
             <div className={styles.AnimalsContainer}>
                 <Input
@@ -76,12 +82,7 @@ const SearchBar = props => {
                     }}
                 />
             </div>
-            <Icon icon='search' size='2x' style={{
-                // color: 'white',
-                // backgroundColor: 'rgb(0, 176, 240)',
-                // padding: '8px',
-                // borderRadius: '15px'
-            }}/>
+            <Icon icon='search' size='2x'/>
         </div>
     );
 };

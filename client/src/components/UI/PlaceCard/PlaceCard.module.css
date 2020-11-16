@@ -1,0 +1,50 @@
+.PlaceCard {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.ImageContainer {
+    width: 20%;
+}
+
+.ImageContainer img {
+    width: 100%;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoContainer {
+    margin: 0 25px;
+}
+
+.Title h3, .Title p {
+    font-weight: 600;
+}
+
+.PriceContainer {
+    width: 25%;
+}
+
+.AddressContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.AddressContainer svg {
+    margin-right: 5px;
+    color: grey;
+}
+
+.Title svg {
+    color: yellow;
+    margin-left: auto;
+    margin-right: 5px
+}

@@ -6,7 +6,43 @@
     color: white;
     justify-content: center;
     min-height: 50px;
-    z-index: 200;
+    z-index: 100;
+}
+
+.Layout {
+    display: flex;
+    justify-content: center;
+}
+
+.Layout main {
+    max-width: 1140px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.BackgroundImage {
+    background: url('../../assets/images/landingPage_background.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+    z-index: -100;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .HeaderContainer {

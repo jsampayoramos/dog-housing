@@ -15,7 +15,9 @@ const Layout = props => {
     }
 
     return (
-        <React.Fragment>
+        <div className={styles.Layout}>
+            <div className={styles.Overlay} />
+            <div className={styles.BackgroundImage} />
             <header className={styles.Header}>
                 <div className={styles.HeaderContainer}>
                     <h1>PetsInn</h1>
@@ -28,7 +30,7 @@ const Layout = props => {
             <main>
                 {props.children}
             </main>
-        </React.Fragment>
+        </div>
     );
 };
 

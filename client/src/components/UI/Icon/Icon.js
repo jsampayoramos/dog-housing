@@ -5,7 +5,7 @@ import styles from './Icon.module.css';
 
 const Icon = props => {
     return (
-        <FontAwesomeIcon icon={props.icon} size={props.size} style={props.style} className={styles.Icon}/>
+        <FontAwesomeIcon icon={props.icon} size={props.size} style={props.style} className={styles.Icon} onClick={props.action}/>
     );
 };
 

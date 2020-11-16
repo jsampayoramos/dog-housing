@@ -1,0 +1,79 @@
+.FilterBar {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: lightgrey;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.InputContainer {
+    max-width: 250px;
+}
+
+.InputContainer input, .InputContainer select {
+    height: 25px;
+}
+
+.DatePicker {
+    width: 100%;
+}
+
+.FilterBar h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.FilterControl {
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    .FilterBar {
+        margin: 0 15px;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .InputContainer {
+        max-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .InputContainer {
+        max-width: 150px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .FilterBar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px 10px;
+    }
+
+    .InputContainer {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .CloseFilter {
+        display: none;
+    }
+
+    .OpenFilter {
+        display: block; 
+    }
+
+    .FilterControl {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .FilterControl svg {
+        margin-left: auto;
+    }
+}
