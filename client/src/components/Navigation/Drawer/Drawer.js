@@ -16,11 +16,11 @@ const drawer = props => {
         <div className={drawerStyle.join(' ')}>
             <ul>
                 <h1>PetInn</h1>
-                <NavigationItem action={props.closeDrawer} style={{marginTop: '15px'}}>Quero ser anfitrião</NavigationItem>
-                <NavigationItem action={props.closeDrawer}>Opção 2</NavigationItem>
+                <NavigationItem to='#' action={props.closeDrawer} style={{marginTop: '15px'}}>Quero ser anfitrião</NavigationItem>
+                <NavigationItem to='#' action={props.closeDrawer}>Opção 2</NavigationItem>
                 <div className={styles.RegistrationContainer}>
-                    <NavigationItem action={props.closeDrawer} style={{marginTop: 'auto'}}>Signup</NavigationItem>
-                    <NavigationItem action={props.closeDrawer}>Login</NavigationItem>
+                    <NavigationItem to='#' action={props.closeDrawer} style={{marginTop: 'auto'}}>Signup</NavigationItem>
+                    <NavigationItem to='/login' action={props.closeDrawer}>Login</NavigationItem>
                 </div>
             </ul>
         </div>

@@ -7,7 +7,7 @@ import './Input.css';
 const input = props => {
     switch(props.elementType) {
         case 'input':
-            return <input className={styles.Input} style={props.style} {...props.config} value={props.value} />;
+            return <input className={styles.Input} style={props.style} {...props.config} value={props.value} onChange={props.action} />;
         case 'select':
             return (
                 <select className={styles.Select} style={props.style} {...props.config}>

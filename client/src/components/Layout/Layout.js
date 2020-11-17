@@ -21,7 +21,7 @@ const Layout = props => {
             <header className={styles.Header}>
                 <div className={styles.HeaderContainer}>
                     <h1>PetsInn</h1>
-                    <NavigationItems action={closeDrawer}/>
+                    <NavigationItems/>
                     <ToggleButton action={closeDrawer}/>
                 </div>
                 {drawerState ? <Modal action={closeDrawer}/> : null}
