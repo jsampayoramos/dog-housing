@@ -9,7 +9,14 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import placesReducer from './store/reducers/placesReducer';
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+
+let composeEnhancers = null;
+if (process.env.NODE_ENV === 'development') {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+} else {
+    composeEnhancers = compose;
+}
 
 const rootReducer = combineReducers({
   places: placesReducer
