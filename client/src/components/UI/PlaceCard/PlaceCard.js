@@ -1,52 +1,53 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import HouseImage from '../../../assets/images/house_one.jpg';
 import Icon from '../Icon/Icon';
+import Button from '../Button/Button';
 
 import styles from './PlaceCard.module.css';
 
-const PlaceCard = props => {
-    const places = useSelector(state => state.places);
-    
-    const placesArray = places.map(place => {
-        return (
+const placeCard = props => {  
+    return (
+        <div>
             <div className={styles.PlaceCard}>
                 <div className={styles.ImageContainer}>
                     <img src={HouseImage} alt='house' />
                 </div>
                 <div className={styles.InfoContainer}>
                     <div className={styles.Title}>
-                        <h3>{place.title}</h3>
+                        <h3>{props.title}</h3>
                         <Icon 
                             icon='star' 
                             size='1x' 
                         />
-                        <p>{place.rating}</p>
+                        <p>{props.rating}</p>
                     </div>
                     <div className={styles.AddressContainer}>
                         <Icon 
                             icon='map-marker-alt' 
                             size='1x' 
                         />
-                        <p>{place.address}</p>
+                        <p>{props.address}</p>
                     </div>
-                    <p>{place.description}</p>
+                    <p className={styles.PlaceDescription}>{props.description}</p>
                 </div>
                 <div className={styles.PriceContainer}>
-                    <p>{place.animals.length > 1 ? place.animals.join(' and ') : places.animals[0]}</p>
-                    <p>{`${place.pricePerNight} € / noite`}</p>
-                    <h3>{`Preço Total ${place.totalPrice}`}</h3>
+                    <div>
+                        <Icon 
+                            icon='paw' 
+                            size='1x' 
+                        />
+                        <p>{props.animals.length > 1 ? props.animals.join(' and ') : props.animals[0]}</p>
+                    </div>
+                    <div id={styles.Prices}>
+                        <h3>{`Total ${props.totalPrice} €`}</h3>
+                        <p>{`${props.pricePerNight} € / noite`}</p>
+                    </div>
+                    <Button>VER OFERTA</Button>
                 </div>
             </div>
-        )
-    });
-    
-    return (
-        <div>
-            {placesArray}
         </div>
     );
 };
 
-export default PlaceCard;
+export default placeCard;

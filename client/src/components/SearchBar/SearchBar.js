@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Input from '../UI/Input/Input';
 import Icon from '../UI/Icon/Icon';
@@ -40,7 +41,7 @@ const SearchBar = props => {
             value:''
         },
     })
-    
+    console.log(props);
     return (
         <div className={styles.SearchBar}>
             <div className={styles.LocationContainer}>
@@ -82,9 +83,9 @@ const SearchBar = props => {
                     }}
                 />
             </div>
-            <Icon icon='search' size='2x'/>
+            <Icon icon='search' size='2x' action={() => props.history.push('/results')}/>
         </div>
     );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);
