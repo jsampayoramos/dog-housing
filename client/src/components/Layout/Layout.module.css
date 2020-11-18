@@ -1,8 +1,10 @@
 .Header {
     display: flex;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     color: white;
     justify-content: center;
     min-height: 50px;
@@ -12,12 +14,13 @@
 .Layout {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Layout main {
     max-width: 1140px;
     width: 100%;
-    min-height: 100vh;
 }
 
 .BackgroundImage {
@@ -40,9 +43,6 @@
     width: 100%;
     height: 100%;
     z-index: -50;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .HeaderContainer {
@@ -53,10 +53,48 @@
     align-items: center;
 }
 
+.Footer {
+    background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.FooterContainer {
+    max-width: 1140px;
+    width: 100%;
+    color: white;
+    margin: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-size: 0.8rem;
+}
+
+.ContactItems div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.ContactItems svg {
+    width: 15px;
+    margin-right: 5px;
+}
+
 @media only screen and (max-width: 1140px) {
     .HeaderContainer {
         padding: 0 15px;
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .FooterContainer {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .ContactItems, .FooterContainer > p {
+        margin-bottom: 10px;
+    }
+}

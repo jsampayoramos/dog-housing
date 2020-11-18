@@ -2,6 +2,10 @@
     outline: none;
 }
 
-.Input, .Select {
+.Input, .Select, .Textarea {
     width: 100%;
+}
+
+.Textarea {
+    resize: none;
 }

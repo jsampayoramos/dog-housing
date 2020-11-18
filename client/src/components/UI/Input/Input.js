@@ -15,10 +15,11 @@ const input = props => {
                 </select>
             );
         case 'date':
-            console.log(props.value)
             return (
                 <DatePicker {...props.config} selected={props.value} className={props.className} onChange={props.action} />
             );
+        case 'textarea':
+            return <textarea className={styles.Textarea}>{props.value}</textarea>
         default: return null;
     };
 };

@@ -1,0 +1,71 @@
+.ContactForm {
+    margin: 0 10px;
+    padding: 25px 0;
+}
+
+.ContactForm h2 {
+    text-align: center;
+}
+
+.ContactForm hr {
+    border: 1px solid lightgrey;
+    width: 20%;
+    margin: 20px auto;
+}
+
+.InputContainer {
+    display: flex;
+    align-items: center;
+}
+
+.InputContainer label {
+    width: 150px;
+}
+
+.InputContainer {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.InputContainer input, .InputContainer textarea {
+    border: none;
+    outline: 1px solid lightgrey;
+}
+
+.InputContainer input {
+    height: 35px;
+}
+
+.InputContainer textarea {
+    height: 200px;
+    align-self: flex-start;
+}
+
+.InputContainer input:focus, .InputContainer textarea:focus {
+    outline: 1px solid lightgrey;
+}
+
+.ContactFormBox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ContactFormBox button {
+    align-self: flex-end;
+}
+
+.message {
+    margin-bottom: auto;
+}
+
+@media only screen and (max-width: 500px) {
+    .InputContainer {
+        flex-direction: column;
+    }
+
+    .InputContainer label {
+        width: 100%;
+    }
+}
