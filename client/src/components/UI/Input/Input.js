@@ -15,8 +15,9 @@ const input = props => {
                 </select>
             );
         case 'date':
+            console.log(props.value)
             return (
-                <DatePicker {...props.config} value={props.value} className={props.className} />
+                <DatePicker {...props.config} selected={props.value} className={props.className} onChange={props.action} />
             );
         default: return null;
     };

@@ -5,6 +5,7 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Results from './Pages/Results/Results';
 import Layout from './components/Layout/Layout';
 import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
 import { iconLibrary } from './utilities/iconSetup'; 
 
 iconLibrary();
@@ -15,6 +16,7 @@ const app = props => {
       <Switch>
         <Route path='/results' component={Results} />
         <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
         <Route path='/' component={LandingPage} />
       </Switch>
     </Layout>

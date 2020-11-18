@@ -5,12 +5,12 @@ import NavigationItem from './NavigationItem/NavigationItem';
 import styles from './NavigationItems.module.css';
 
 const navigationItems = props => {
-    return(
+    return (
         <ul className={styles.NavigationItems}>
-            <NavigationItem action={props.action} to='#'>Quero ser anfitrião</NavigationItem>
-            <NavigationItem action={props.action} to='#'>Opção 2</NavigationItem>
-            <NavigationItem action={props.action} to='#'>Signup</NavigationItem>
-            <NavigationItem action={props.action} to='/login'>Login</NavigationItem>
+            <NavigationItem to='#'>Quero ser anfitrião</NavigationItem>
+            <NavigationItem to='#'>Opção 2</NavigationItem>
+            <NavigationItem to='/signup'>Signup</NavigationItem>
+            <NavigationItem to='/login'>Login</NavigationItem>
         </ul>
     );
 };

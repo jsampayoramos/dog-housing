@@ -56,12 +56,12 @@ const Login = props => {
     });
 
     return (
-        <section className={styles.Auth}>
+        <section className={styles.Login}>
             <form className={styles.AuthBox}>
-                <h3>Welcome</h3>
+                <h3>Benvindo</h3>
                 <hr />
                 {loginForm}
-                <p>Forgot password? Click here.</p>
+                <p>Não te lembras da palavra pass? Carregue aqui.</p>
                 <Button>LOGIN</Button>
             </form>
         </section>

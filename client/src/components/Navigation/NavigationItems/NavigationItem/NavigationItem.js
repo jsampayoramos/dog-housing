@@ -6,7 +6,7 @@ import styles from './NavigationItem.module.css';
 const navigationItem = props => {
     return (
         <NavLink
-            to={'/login'}
+            to={props.to}
             className={styles.NavigationItem}
             style={props.style}
             onClick={props.action}
