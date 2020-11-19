@@ -41,7 +41,7 @@ const SearchBar = props => {
             value:''
         },
     })
-    console.log(props);
+    
     return (
         <div className={styles.SearchBar}>
             <div className={styles.LocationContainer}>

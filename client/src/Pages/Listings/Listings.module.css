@@ -1,0 +1,56 @@
+.Listings {
+    background-color: white;
+    margin-top: 75px;
+    padding: 20px;
+}
+
+.Listings div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Listings hr {
+    border: 1px solid lightgrey;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.Header {
+    display: flex;
+    width: 100%;
+    font-size: 0.8rem;
+    align-items: center;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 1140px) {
+    .Listings {
+        margin: 75px 10px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .Listings hr {
+        display: none;
+    }
+
+    .Header {
+        display: none;
+    }
+
+    .Listings div:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Listings div:first-child {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .Listings button {
+        margin: 10px 0;
+    }
+}

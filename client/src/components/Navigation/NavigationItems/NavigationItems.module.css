@@ -4,6 +4,49 @@
     font-size: 1em;
 }
 
+.LoginIcon {
+    margin-left: 10px;
+    position: relative;
+}
+
+.DropdownBox {
+    position: absolute;
+    right: 0;
+    flex-direction: column;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 20px 12px 40px;
+    background-color: #f9f9f9;
+    align-items: flex-end;
+}
+
+.DropdownBox a:link, .DropdownBox a:visited {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.LoginIcon div span:last-child {
+    border-top: 1px solid lightgrey;
+}
+
+.LoginIcon span {
+    color: black;
+    padding: 7px 0;
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+    display: block;
+}
+
+.Close {
+    display: none;
+}
+
+.Open {
+    display: flex;
+}
+
 @media only screen and (max-width: 700px) {
     .NavigationItems {
         display: none;

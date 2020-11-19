@@ -8,8 +8,9 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import placesReducer from './store/reducers/placesReducer';
-
-// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+import authReducer from './store/reducers/authReducer';
+import listingReducer from './store/reducers/listingsReducer';
+import listingsReducer from './store/reducers/listingsReducer';
 
 let composeEnhancers = null;
 if (process.env.NODE_ENV === 'development') {
@@ -19,7 +20,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const rootReducer = combineReducers({
-  places: placesReducer
+  places: placesReducer,
+  auth: authReducer,
+  listings: listingsReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

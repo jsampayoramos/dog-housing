@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import NavigationItems from '../Navigation/NavigationItems/NavigationItems';
 import ToggleButton from '../Navigation/ToogleButton/ToggleButton';
@@ -11,7 +12,7 @@ import styles from './Layout.module.css';
 
 const Layout = props => {
     const [drawerState, setDrawer] = useState(false);
-    
+    const { token } = useSelector(state => state.auth);
     const { pathname } = useLocation();
 
     let footer;
@@ -53,11 +54,11 @@ const Layout = props => {
             <header className={styles.Header}>
                 <div className={styles.HeaderContainer}>
                     <h1>PetsInn</h1>
-                    <NavigationItems/>
+                    <NavigationItems isAuth={token}/>
                     <ToggleButton action={closeDrawer}/>
                 </div>
                 {drawerState ? <Modal action={closeDrawer}/> : null}
-                <Drawer status={drawerState} closeDrawer={closeDrawer}/>
+                <Drawer status={drawerState} closeDrawer={closeDrawer} isAuth={token}/>
             </header>
             <main>
                 {props.children}

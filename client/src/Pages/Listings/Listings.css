@@ -1,0 +1,79 @@
+.spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets, .spanClose {
+    display: block;
+    width: 11%;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.spanAddress {
+    display: block;
+    width: 35%;
+    padding: 0 5px;
+}
+
+.spanListingImage {
+    display: block;
+    width: 10%;
+}
+
+.spanListingImage img {
+    width: 100%;
+}
+
+.spanNumberOfPets svg {
+    display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .spanAddress {
+        width: 70%;
+    }
+
+    .spanClose {
+        margin-left: auto;
+        width: 20px;
+    }
+
+    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+        order: 2;
+        width: 25%;
+        margin-top: 15px;
+    }
+
+    .spanListingImage {
+        width: 100px;
+    }
+
+    .spanNumberOfPets svg {
+        display: inline;
+        margin-right: 5px;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    .spanAddress {
+        width: 100%;
+        order: 2;
+        text-align: center;
+    }
+
+    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+        margin-top: 5px;
+    }
+
+    .spanListingImage {
+        margin: auto;
+    }
+
+    .spanClose {
+        position: absolute;
+        right: 0;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+        width: 100%;
+    }
+}
