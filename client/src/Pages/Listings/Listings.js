@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Button from '../../components/UI/Button/Button';
 import Listing from './Listing/Listing';
@@ -23,7 +24,7 @@ const Listings = props => {
         <section className={styles.Listings} >
             <div>
                 <h3>As tuas propriedades</h3>
-                <Button>Adicionar propriedade</Button>
+                <Button><Link to='/listings/newproperty'>Adicionar propriedade</Link></Button>
             </div>
             <div className={styles.Header}>
                 <span className='spanListingImage'></span>

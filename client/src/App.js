@@ -7,6 +7,7 @@ import Layout from './components/Layout/Layout';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Signup/Signup';
 import Listings from './Pages/Listings/Listings';
+import NewProperty from './Pages/NewProperty/NewProperty';
 import { iconLibrary } from './utilities/iconSetup'; 
 
 iconLibrary();
@@ -18,6 +19,7 @@ const app = props => {
         <Route path='/results' component={Results} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
+        <Route path='/listings/newproperty' component={NewProperty} />
         <Route path='/listings' component={Listings} />
         <Route path='/' component={LandingPage} />
       </Switch>

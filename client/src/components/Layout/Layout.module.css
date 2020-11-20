@@ -16,18 +16,21 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    min-height: 100vh;
 }
 
 .Layout main {
     max-width: 1140px;
     width: 100%;
+    min-height: 100vh;
 }
 
 .BackgroundImage {
     background: url('../../assets/images/landingPage_background.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     z-index: -100;
     position: absolute;

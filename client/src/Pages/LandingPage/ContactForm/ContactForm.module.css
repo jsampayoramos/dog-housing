@@ -1,6 +1,6 @@
 .ContactForm {
-    margin: 0 10px;
     padding: 25px 0;
+    background-color: white;
 }
 
 .ContactForm h2 {
@@ -14,6 +14,7 @@
 }
 
 .InputContainer {
+    padding: 0 10px;
     display: flex;
     align-items: center;
 }
@@ -54,6 +55,7 @@
 
 .ContactFormBox button {
     align-self: flex-end;
+    margin-right: 10px;
 }
 
 .message {

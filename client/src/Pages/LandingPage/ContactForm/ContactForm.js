@@ -32,7 +32,6 @@ const ContactForm = props => {
             type: 'textarea',
             config: {
                 required: true,
-                type: 'email',
                 name: 'message'
             },
             value: ''

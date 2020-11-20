@@ -13,7 +13,7 @@ const listing = props => {
             <span className='spanPropertyType'>{props.propertyType}</span>
             <span className='spanStatus'>{props.status}</span>
             <span className='spanNumberOfPets'><Icon icon='paw' size='1x' />{props.numberOfPets}</span>
-            <span className='spanTypeOfPets'>{props.typeOfPets}</span>
+            <span className='spanTypeOfPets'>{props.typeOfPets.length > 1 ? props.typeOfPets.join(' | ') : props.typeOfPets}</span>
             <span className='spanClose'><Icon icon='times' size='1x'/></span>
         </div>
     );

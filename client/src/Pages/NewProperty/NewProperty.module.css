@@ -1,0 +1,76 @@
+.NewProperty {
+    background-color: white;
+    margin-top: 75px;
+    padding: 20px;
+}
+
+.NewProperty input, .NewProperty select, .NewProperty textarea {
+    border: none;
+    height: 35px;
+    outline: 1px solid lightgrey;
+}
+
+.NewProperty form {
+    display: flex;
+    flex-direction: column;
+}
+
+.NewProperty {
+    display: flex;
+    flex-direction: column;
+}
+
+.NewProperty hr {
+    border: 1px solid lightgrey;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.NewProperty button {
+    width: 150px;
+    margin: 10px 0 0 auto;
+}
+
+.NewProperty form div {
+    margin-left: auto;
+}
+
+.NewProperty form div button:first-child {
+    margin-right: 10px;
+    background-color: grey;
+    padding: 0;
+}
+
+.NewProperty form div a:link, .NewProperty form div a:visited {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+}
+
+.NewProperty input:focus, .NewProperty select:focus, .NewProperty textarea:focus {
+    outline: 1px solid lightgrey;
+}
+
+.NewProperty textarea {
+    min-height: 200px;
+}
+
+@media only screen and (max-width: 1140px) {
+    .NewProperty {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .ButtonContainer {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .NewProperty form div button:first-child {
+        margin-right: 0;
+    }
+}
