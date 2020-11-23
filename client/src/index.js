@@ -9,8 +9,9 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import placesReducer from './store/reducers/placesReducer';
 import authReducer from './store/reducers/authReducer';
-import listingReducer from './store/reducers/listingsReducer';
 import listingsReducer from './store/reducers/listingsReducer';
+import errorReducer from './store/reducers/errorReducer';
+import loadingReducer from './store/reducers/loadingReducer';
 
 let composeEnhancers = null;
 if (process.env.NODE_ENV === 'development') {
@@ -22,7 +23,9 @@ if (process.env.NODE_ENV === 'development') {
 const rootReducer = combineReducers({
   places: placesReducer,
   auth: authReducer,
-  listings: listingsReducer
+  listings: listingsReducer,
+  error: errorReducer,
+  loading: loadingReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

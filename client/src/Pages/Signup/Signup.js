@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import * as loadingActions from '../../store/actions/loadingActions';
+import * as validators from '../../utilities/validators';
 
 import styles from './Signup.module.css';
 
@@ -24,7 +29,8 @@ const Signup = props => {
                 defaultValue: 'Anfitrião',
                 name: 'type'
             },
-            options: ['Anfitrião', 'Hóspede']
+            options: ['Anfitrião', 'Hóspede'],
+            value: 'Anfitrião'
         },
         birthday: {
             label: 'Data de aniversário',
@@ -51,7 +57,8 @@ const Signup = props => {
             config: {
                 type: 'password',
                 required: true,
-                name: 'password'
+                name: 'password',
+                minLength: 8,
             },
             value: ''
         },
@@ -61,11 +68,21 @@ const Signup = props => {
             config: {
                 type: 'password',
                 required: true,
-                name: 'confirmPassword'
+                name: 'confirmPassword',
+                minLength: 8
             },
             value: ''
         }
     });
+
+    const [errorState, setError] = useState({
+        status: false,
+        message: ''
+    });
+
+    const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const setFormValue = event => {
         if(event.target) {
@@ -105,12 +122,71 @@ const Signup = props => {
         );
     });
     
+    const setFormToEmpty = () => {
+        const signupFormCopy = {
+            ...signupForm
+        };
+
+        for(let key in signupFormCopy) {
+            if(key === 'type') {
+                signupFormCopy[key].value = 'Anfitrião';    
+            } else {
+                signupFormCopy[key].value = '';
+            }
+        }
+
+        setSignupForm(signupFormCopy);
+    }
+
+    const onSignup = async event => {
+        event.preventDefault();
+        dispatch(loadingActions.toggleLoading);
+
+        let data = {
+            name: signupForm.name.value,
+            accountType: signupForm.type.value,
+            birthday: signupForm.birthday.value,
+            email: signupForm.email.value,
+            password: signupForm.password.value,
+            confirmPassword: signupForm.confirmPassword.value
+        };
+
+        try {
+            const passwordConfirmation = validators.passwordCheck(data.password, data.confirmPassword);
+
+            if(!passwordConfirmation) {
+                const error = new Error('Validação falhou');
+                error.response = {
+                    data: {
+                        message: 'Palavras pass não são condizentes' 
+                    }
+                }
+                throw error;
+            }
+
+            await axios({
+                method: 'PUT',
+                url: '/auth/signup',
+                data: data
+            });
+
+            dispatch(loadingActions.toggleLoading);
+            setError({status: false, message: ''});
+            setFormToEmpty();
+            history.push('/login');
+        } catch (error) {
+            dispatch(loadingActions.toggleLoading);
+            setError({ status: true, message: error.response.data.message });
+        };
+    };
+
     return (
         <section className={styles.Signup}>
-            <form className={styles.SignupBox}>
+            <form className={styles.SignupBox} onSubmit={onSignup}>
                 <h3>Junte-se à nossa comunidade</h3>
                 <hr />
                 {signupFormArray}
+                {errorState ? <p>{errorState.message}</p> : null}
                 <Button>Signup</Button>
             </form>
         </section>

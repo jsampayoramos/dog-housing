@@ -28,6 +28,13 @@
 
 .SignupBox button {
     width: 200px;
+    cursor: pointer;
+}
+
+.SignupBox p {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
 }
 
 .InputContainer input, .InputContainer select {

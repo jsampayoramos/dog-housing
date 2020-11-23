@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionsType';
 
 const initialState = {
-    token: 'agsgsgags'
+    token: ''
 };
 
 const authReducer = (state = initialState, action) => {
