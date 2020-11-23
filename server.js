@@ -17,12 +17,12 @@ const __dirname = dirname(__filename);
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     next();
+// });
 
 app.use(morgan('combined'));
 
@@ -36,14 +36,14 @@ app.use((error, req, res, next) => {
     });
 });
 
-if (process.env.NODE_ENV === "production") {
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, "client/build")));
-    // Handle React routing, return all requests to React app
-    app.get("*", function (req, res) {
-        res.sendFile(path.join(__dirname, "client/build", "index.html"));
-    });
-}
+// if (process.env.NODE_ENV === "production") {
+//     // Serve any static files
+//     app.use(express.static(path.join(__dirname, "client/build")));
+//     // Handle React routing, return all requests to React app
+//     app.get("*", function (req, res) {
+//         res.sendFile(path.join(__dirname, "client/build", "index.html"));
+//     });
+// }
 
 sequelize.sync()
     .then(res => {
