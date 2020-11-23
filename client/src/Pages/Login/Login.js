@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import * as authActions from '../../store/actions/authActions';
+import * as loadingActions from '../../store/actions/loadingActions';
 
 import styles from './Login.module.css';
 
@@ -29,6 +34,14 @@ const Login = props => {
         }
     });
 
+    const [ errorState, setError ] = useState({
+        status: false,
+        message: ''
+    })
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const setFormValues = (event) => {
         const {name, value} = event.target;
 
@@ -55,13 +68,48 @@ const Login = props => {
         );
     });
 
+    const submitLogin = async (event) => {
+        event.preventDefault();
+        dispatch(loadingActions.toggleLoading);
+        const data = {
+            email: loginData.email.value,
+            password: loginData.password.value
+        };
+        
+        try {
+            const response = await axios({
+                method: 'POST',
+                url: '/auth/login',
+                data
+            })
+            dispatch(loadingActions.toggleLoading);
+            dispatch(authActions.login({
+                token: response.data.token,
+                userId: response.data.userId
+            }))
+            setError({
+                status: false,
+                message: ''
+            });
+            history.push('./dashboard');
+
+        } catch(err) {
+            dispatch(loadingActions.toggleLoading);
+            setError({
+                status: true,
+                message: err.response.data.message
+            });
+        }
+    };
+
     return (
         <section className={styles.Login}>
-            <form className={styles.AuthBox}>
+            <form className={styles.AuthBox} onSubmit={submitLogin}>
                 <h3>Benvindo</h3>
                 <hr />
                 {loginForm}
                 <p>Não te lembras da palavra pass? Carregue aqui.</p>
+                {errorState.status ? <p className={styles.ErrorMessage}>{errorState.message}</p> : null}
                 <Button>LOGIN</Button>
             </form>
         </section>

@@ -1,5 +1,6 @@
 import bodyAPIs from 'express-validator';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 import User from '../models/user.js';
 
@@ -40,9 +41,48 @@ export const signup = async (req, res, next) => {
             message: 'User created successfuly'
         })
     } catch(err) {
-        if(!err.statusCode) {
-            err.statusCode = 500;
-        }
+        err.statusCode = err.statusCode || 500;
         next(err);
     }
 };
+
+export const login = async (req, res, next) => {
+    const { email, password } = req.body;
+    
+    try {
+        const user = await User.findAll({where: {email}})
+        
+        if(user.length === 0) {
+            const error = new Error('Invalid authentication');
+            error.statusCode = 401;
+            error.message = 'E-mail não existe';
+            throw error;
+        }
+
+        const passwordCheck = await bcrypt.compare(password, user[0].password);
+        
+        if(!passwordCheck) {
+            const error = new Error('Invalid authentication');
+            error.statusCode = 401;
+            error.message = 'Palavra passe incorrecta';
+            throw error;
+        }
+
+        const token = jwt.sign({
+            username: user.email,
+            userId: user[0].id
+        },
+        process.env.TOKEN_SECRET_WORD,
+        {expiresIn: '1h'});
+
+        return res.status(200).json({
+            message: 'Login successful',
+            token: token,
+            userId: user[0].id
+        });
+    } catch(err) {
+        err.statusCode = err.statusCode || 500;
+        next(err);
+    }
+
+}

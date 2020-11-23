@@ -97,6 +97,7 @@
 
     .SearchBar svg {
         margin: auto;
+        width: 200px !important;
     }
 
     

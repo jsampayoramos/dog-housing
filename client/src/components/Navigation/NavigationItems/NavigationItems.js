@@ -20,24 +20,24 @@ const NavigationItems = props => {
 
     dropdown ? dropdownClass.push(styles.Open) : dropdownClass.push(styles.Close);
 
-    const toggleDropdown = (event) => {
-        const { tagName } = event.target;
+    const toggleDropdown = () => {
+        setDropdown(prevState => !prevState);
+    }
 
-        if(tagName === 'SPAN') {
-            setDropdown(false);
-        } else if(tagName === 'path' || tagName === 'svg') {
-            setDropdown(prevState => !prevState);
-        }
-    };
+    const logout = () => {
+        toggleDropdown();
+        props.logout();
+        setDropdown(prevState => !prevState);
+    }
 
     if(props.isAuth) {
         loginAndSignup = (
-            <li className={styles.LoginIcon} name='icon' onClick={(event) => toggleDropdown(event)}>
-                <Icon icon='user' size='2x' />
+            <li className={styles.LoginIcon} name='icon'>
+                <Icon icon='user' size='2x' action={(event) => toggleDropdown(event)}/>
                 <div className={dropdownClass.join(' ')} name='dropdown'>
-                    <span onClick={(event) => toggleDropdown(event)}>Dashboard</span>
+                    <span>Dashboard</span>
                     <Link to='/listings'><span onClick={(event) => toggleDropdown(event)}>Alojamentos</span></Link>
-                    <span onClick={(event) => toggleDropdown(event)}>Logout</span>
+                    <span onClick={logout}>Logout</span>
                 </div>
             </li>
         );

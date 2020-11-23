@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import NavigationItems from '../Navigation/NavigationItems/NavigationItems';
 import ToggleButton from '../Navigation/ToogleButton/ToggleButton';
 import Drawer from '../Navigation/Drawer/Drawer';
 import Modal from '../UI/Modal/Modal';
 import Icon from '../UI/Icon/Icon';
+import * as authActions from '../../store/actions/authActions';
 
 import styles from './Layout.module.css';
 
@@ -14,6 +15,8 @@ const Layout = props => {
     const [drawerState, setDrawer] = useState(false);
     const { token } = useSelector(state => state.auth);
     const { pathname } = useLocation();
+
+    const dispatch = useDispatch();
 
     let footer;
 
@@ -47,6 +50,11 @@ const Layout = props => {
         setDrawer(prevState => !prevState);
     }
 
+    const logout = (event) => {
+        closeDrawer(event);
+        dispatch(authActions.logout());
+    }
+
     return (
         <div className={styles.Layout}>
             <div className={styles.Overlay} />
@@ -54,11 +62,11 @@ const Layout = props => {
             <header className={styles.Header}>
                 <div className={styles.HeaderContainer}>
                     <h1>PetsInn</h1>
-                    <NavigationItems isAuth={token}/>
+                    <NavigationItems isAuth={token} logout={() => dispatch(authActions.logout())}/>
                     <ToggleButton action={closeDrawer}/>
                 </div>
                 {drawerState ? <Modal action={closeDrawer}/> : null}
-                <Drawer status={drawerState} closeDrawer={closeDrawer} isAuth={token}/>
+                <Drawer status={drawerState} closeDrawer={closeDrawer} isAuth={token} logout={logout}/>
             </header>
             <main>
                 {props.children}

@@ -29,6 +29,9 @@ router.put(
             .isISO8601()
             .toDate()
     ], 
-    authControler.signup);
+    authControler.signup
+);
+
+router.post('/login', authControler.login);
 
 export default router;

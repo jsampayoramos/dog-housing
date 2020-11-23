@@ -24,7 +24,7 @@ const drawer = props => {
             <div className={styles.AccountItems}>
                 <div onClick={props.closeDrawer}><NavigationItem to='#'>Dashboard</NavigationItem></div>
                 <div onClick={props.closeDrawer}><NavigationItem to='/listings'>Alojamentos</NavigationItem></div>
-                <div onClick={props.closeDrawer}><NavigationItem to='#'>Logout</NavigationItem></div>
+                <div onClick={props.logout}><NavigationItem to='#'>Logout</NavigationItem></div>
             </div>
         );
     }

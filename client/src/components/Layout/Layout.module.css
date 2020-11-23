@@ -30,7 +30,7 @@
     background: url('../../assets/images/landingPage_background.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     z-index: -100;
     position: absolute;

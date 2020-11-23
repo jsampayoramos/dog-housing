@@ -1,6 +1,6 @@
-import React, { useDebugValue } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Results from './Pages/Results/Results';
@@ -11,13 +11,32 @@ import Listings from './Pages/Listings/Listings';
 import NewProperty from './Pages/NewProperty/NewProperty';
 import ErrorModal from './components/ErrorModal/ErrorModal';
 import Spinner from './components/UI/Spinner/Spinner';
-import { iconLibrary } from './utilities/iconSetup'; 
+import { iconLibrary } from './utilities/iconSetup';
+import * as authActions from './store/actions/authActions';
 
 iconLibrary();
 
 const App = props => {
   const error = useSelector(state => state.error);
   const loading = useSelector(state => state.loading);
+  const token = useSelector(state => state.auth.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.autoLogin());
+  }, [dispatch]);
+
+  let authComponents = (
+    <React.Fragment>
+      <Route path='/listings/newproperty' component={NewProperty} />
+      <Route path='/dashboard' render={() => <div>TESTE</div>} />
+      <Route exact path='/listings' component={Listings} />
+    </React.Fragment>
+  );
+
+  if(!token) {
+    authComponents = null;
+  };
 
   return (
     <Layout>
@@ -25,8 +44,7 @@ const App = props => {
         <Route path='/results' component={Results} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
-        <Route path='/listings/newproperty' component={NewProperty} />
-        <Route path='/listings' component={Listings} />
+        {authComponents}
         <Route path='/' component={LandingPage} />
       </Switch>
       {error.status ? <ErrorModal message={error.message}/> : null}

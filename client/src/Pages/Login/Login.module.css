@@ -25,7 +25,7 @@
     margin: 15px 0;
 }
 
-.AuthBox p {
+.AuthBox p:first-of-type {
     font-size: 0.8rem;
     cursor: pointer;
     margin-top: 10px;
@@ -33,9 +33,16 @@
     color: blue;
 }
 
+.ErrorMessage {
+    font-size: 0.8rem;
+    margin: 10px auto 0 auto;
+    color: red;
+}
+
 .AuthBox button {
     margin-top: auto;
     width: 100%;
+    cursor: pointer;
 }
 
 .InputContainer {
