@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import path from 'path';
 
 import sequelize from './util/database.js';
 import authRoutes from './routes/auth.js';
