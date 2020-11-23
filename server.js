@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 import sequelize from './util/database.js';
 import authRoutes from './routes/auth.js';
@@ -9,6 +11,9 @@ import authRoutes from './routes/auth.js';
 import User from './models/user.js';
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.use(bodyParser.json());
 
