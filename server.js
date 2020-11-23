@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 
 import sequelize from './util/database.js';
 import authRoutes from './routes/auth.js';
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(morgan('combined'));
+
 app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
@@ -30,6 +33,7 @@ app.use((error, req, res, next) => {
 sequelize.sync()
     .then(res => {
         app.listen(process.env.PORT || 5000); 
+        console.log('a correr')
     })
     .catch(error => {
         console.log(error)
