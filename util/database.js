@@ -5,8 +5,8 @@ let sequelize;
 if (process.env.DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
     sequelize = new Sequelize(process.env.DATABASE_URL, {
-        dialect: 'mysql',
-        protocol: 'mysql',
+        dialect: 'postgres',
+        protocol: 'postgres',
         logging: true
     });
   } else {
