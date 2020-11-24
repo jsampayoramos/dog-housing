@@ -12,6 +12,7 @@ import authReducer from './store/reducers/authReducer';
 import listingsReducer from './store/reducers/listingsReducer';
 import errorReducer from './store/reducers/errorReducer';
 import loadingReducer from './store/reducers/loadingReducer';
+import checkinsReducer from './store/reducers/checkinsReducer';
 
 let composeEnhancers = null;
 if (process.env.NODE_ENV === 'development') {
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   listings: listingsReducer,
   error: errorReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  checkins: checkinsReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

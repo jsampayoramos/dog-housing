@@ -1,0 +1,17 @@
+.checkin-date, .checkin-time, .checkout-date, .checkout-time, .checkin-name {
+    width: 14.2%;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.checkin-number-pets {
+    width: 7%;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.checkin-address {
+    width: 22%;
+    font-size: 0.9rem;
+    font-weight: 300;
+}

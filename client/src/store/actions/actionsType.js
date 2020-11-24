@@ -5,3 +5,4 @@ export const ADD_LISTINGS = 'ADD_LISTINGS';
 export const ADD_ERROR = 'ADD_ERROR';
 export const DELETE_ERROR = 'DELETE_ERROR';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const ADD_CHECKINS = 'ADD_CHECKINS';

@@ -1,0 +1,11 @@
+.Dashboard {
+    background-color: white;
+    margin-top: 75px;
+    padding: 20px;
+}
+
+.Dashboard hr {
+    border: 1px solid lightgrey;
+    width: 100%;
+    margin: 10px 0;
+}

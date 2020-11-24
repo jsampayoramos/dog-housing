@@ -1,0 +1,10 @@
+.NextCheckins {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.NextCheckins h3 {
+    width: 100%;
+    font-size: 1rem;
+    margin: 10px 0;
+}

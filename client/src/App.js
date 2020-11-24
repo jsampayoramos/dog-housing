@@ -11,6 +11,7 @@ import Listings from './Pages/Listings/Listings';
 import NewProperty from './Pages/NewProperty/NewProperty';
 import ErrorModal from './components/ErrorModal/ErrorModal';
 import Spinner from './components/UI/Spinner/Spinner';
+import Dashboard from './Pages/Dashboard/Dashboard';
 import { iconLibrary } from './utilities/iconSetup';
 import * as authActions from './store/actions/authActions';
 
@@ -29,7 +30,7 @@ const App = props => {
   let authComponents = (
     <React.Fragment>
       <Route path='/listings/newproperty' component={NewProperty} />
-      <Route path='/dashboard' render={() => <div>TESTE</div>} />
+      <Route path='/dashboard' component={Dashboard} />
       <Route exact path='/listings' component={Listings} />
     </React.Fragment>
   );
