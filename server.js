@@ -48,7 +48,6 @@ if (process.env.NODE_ENV === "production") {
 sequelize.sync()
     .then(res => {
         app.listen(process.env.PORT || 5000); 
-        console.log('a correr')
     })
     .catch(error => {
         console.log(error)

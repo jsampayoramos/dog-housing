@@ -55,7 +55,7 @@ const NewProperty = props => {
                 required: true,
                 defaultValue: 'Apartamento'
             },
-            options: ['Apartamento', 'Moradia/Vivenda'],
+            options: ['Apartamento', 'Moradia', 'Quinta', 'Hotel para cães'],
             value: ''
         },
         description: {
@@ -68,6 +68,29 @@ const NewProperty = props => {
             value: ''
         }
     });
+
+    const [checkBoxForm, setCheckBoxForm] = useState({
+        walks: {
+            label: 'Passeios diários',
+            type: 'checkbox',
+            config: {
+                type: 'checkbox',
+                name: 'ameneties'
+            },
+            value: 'Passeios diários'
+        },
+        balcony: {
+            label: 'Jardim/Terraço',
+            type: 'checkbox',
+            config: {
+                type: 'checkbox',
+                name: 'ameneties'
+            },
+            value: 'Jardim/Terraço'
+        }
+    });
+
+    const [ checkedOptions, setCheckedOptions] = useState([]);
 
     const setFormValues = event => {
         const {name, value} = event.target;
@@ -82,29 +105,65 @@ const NewProperty = props => {
     };
 
     const formArray = Object.keys(form).map(el => {
+        if(el !== 'description') {
+            return (
+                <React.Fragment>
+                    <label>{form[el].label}</label>
+                    <Input
+                        style={{
+                            marginBottom: '10px'
+                        }}
+                        action={setFormValues} 
+                        elementType={form[el].type}
+                        config={form[el].config}
+                        value={form[el].value}
+                        options={form[el].type === 'select' ? form[el].options : null}
+                    />
+                </React.Fragment>
+            );
+        };
+    });
+
+    const setChecked = (event) => {
+        let checkedOptionsCopy = [...checkedOptions];
+        const index = checkedOptionsCopy.indexOf(event.target.value);
+        if(index === -1) {
+            checkedOptionsCopy = [...checkedOptionsCopy, event.target.value];
+        } else {
+            checkedOptionsCopy.splice(index, 1); 
+        };
+        setCheckedOptions(checkedOptionsCopy);
+    }
+
+    const checkBoxArray = Object.keys(checkBoxForm).map(key => {
         return (
-            <React.Fragment>
-                <label>{form[el].label}</label>
-                <Input
-                    style={{
-                        marginBottom: '10px'
-                    }}
-                    action={setFormValues} 
-                    elementType={form[el].type}
-                    config={form[el].config}
-                    value={form[el].value}
-                    options={form[el].type === 'select' ? form[el].options : null}
-                />
-            </React.Fragment>
+            <div className={styles.CheckBoxUnitContainer}>
+                <label>{checkBoxForm[key].label}</label>
+                <Input elementType={checkBoxForm[key].type} config={checkBoxForm[key].config} value={checkBoxForm[key].value} action={setChecked} />
+            </div>
         )
     })
-
+    console.log(checkedOptions);
     return (
         <section className={styles.NewProperty} >
             <h3>Adicionar propriedade</h3>
             <hr />
             <form>
                 {formArray}
+                <div className={styles.CheckBoxContainer}>
+                    <h3>Serviços</h3>
+                    {checkBoxArray}
+                </div>
+                <label>{form.description.label}</label>
+                <Input
+                    style={{
+                        marginBottom: '10px'
+                    }}
+                    action={setFormValues} 
+                    elementType={form.description.type}
+                    config={form.description.config}
+                    value={form.description.value}
+                />
                 <div className={styles.ButtonContainer}>
                     <Button><Link to='/listings'>Cancelar</Link></Button>
                     <Button>Adicionar</Button>

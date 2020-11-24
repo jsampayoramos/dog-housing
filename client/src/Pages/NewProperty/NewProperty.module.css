@@ -12,7 +12,12 @@
 
 .NewProperty form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.NewProperty h3 {
+    width: 100%;
 }
 
 .NewProperty {
@@ -31,7 +36,7 @@
     margin: 10px 0 0 auto;
 }
 
-.NewProperty form div {
+.ButtonContainer {
     margin-left: auto;
 }
 
@@ -54,6 +59,47 @@
 
 .NewProperty textarea {
     min-height: 200px;
+}
+
+.InputContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.InputContainer input, .InputContainer select, .InputContainer textarea {
+    width: 100%;
+}
+
+.CheckBoxContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.CheckBoxContainer h3 {
+    width: 100%;
+}
+
+.CheckBoxUnitContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.CheckBoxUnitContainer h3 {
+    width: 100%;
+}
+
+.CheckBoxUnitContainer label {
+    margin-right: 10px;
+}
+
+.CheckBoxUnitContainer input {
+    outline: none;
 }
 
 @media only screen and (max-width: 1140px) {

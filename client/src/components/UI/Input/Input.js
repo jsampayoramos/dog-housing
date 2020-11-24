@@ -19,7 +19,9 @@ const input = props => {
                 <DatePicker {...props.config} selected={props.value} className={props.className} onChange={props.action} />
             );
         case 'textarea':
-            return <textarea className={styles.Textarea}>{props.value}</textarea>
+            return <textarea className={styles.Textarea}>{props.value}</textarea>;
+        case 'checkbox':
+            return <input {...props.config} value={props.value} onChange={props.action} />
         default: return null;
     };
 };

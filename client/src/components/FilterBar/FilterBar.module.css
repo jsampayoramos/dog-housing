@@ -2,16 +2,39 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: lightgrey;
     max-width: 100%;
+}
+
+.FilterContainer label {
+    font-size: 0.9rem;
+}
+
+.FilterBar form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.FilterContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.FilterContainer svg {
+    margin-top: 10px;
+    margin-left: auto;
+    width: 20px !important;
+    height: 20px !important;
 }
 
 .InputContainer {
     max-width: 250px;
 }
 
-.InputContainer input, .InputContainer select {
+.InputContainer input, .InputContainer select, .OrderContainer select {
     height: 25px;
 }
 
@@ -19,13 +42,31 @@
     width: 100%;
 }
 
-.FilterBar h3 {
-    margin: 0;
-    padding: 0;
-}
-
 .FilterControl {
     display: none;
+}
+
+.CheckBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CheckBox label {
+    margin-right: 10px;
+}
+
+.CloseAddFilter {
+    height: 0;
+    overflow: hidden;
+}
+
+.OpenAddFilter {
+    margin-top: 15px;
+    padding-top: 5px;
+    border-top: 1px solid darkgrey;
+    height: auto;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -55,6 +96,10 @@
         
     }
 
+    .FilterContainer form:first-child {
+        flex-direction: column;
+    }
+
     .InputContainer {
         width: 100%;
         max-width: 100%;
@@ -76,5 +121,22 @@
 
     .FilterControl svg {
         margin-left: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .OpenAddFilter {
+        flex-wrap: wrap;
+        justify-content: space-evenly !important;
+    }
+    .OrderContainer {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .CheckBoxContainer {
+        width: 100%;
     }
 }
