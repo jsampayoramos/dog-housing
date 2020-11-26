@@ -102,11 +102,38 @@
     outline: none;
 }
 
+.ImageContainer {
+    width: 100%;
+}
+
+.ImageContainer input {
+    outline: none;
+    
+}
+
+.ImagesUploaded {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 0.8rem;
+    color: rgb(0, 176, 240);
+}
+
 @media only screen and (max-width: 1140px) {
     .NewProperty {
         margin-left: 10px;
         margin-right: 10px;
     }
+}
+
+.ImageNames {
+    display: flex;
+}
+
+.ImageNames p {
+    margin-left: 10px;
+    color: black;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 500px) {

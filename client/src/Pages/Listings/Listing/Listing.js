@@ -8,12 +8,12 @@ import styles from './Listing.module.css';
 const listing = props => {
     return (
         <div className={styles.Listing}>
-            <span className='spanListingImage'><img src={ListingImage} alt='Property' /></span>
+            <span className='spanListingImage'><img src={props.image[0]} alt='Property' /></span>
             <span className='spanAddress'>{props.address}</span>
-            <span className='spanPropertyType'>{props.propertyType}</span>
+            <span className='spanPropertyType'>{props.typeOfProperty}</span>
             <span className='spanStatus'>{props.status}</span>
-            <span className='spanNumberOfPets'><Icon icon='paw' size='1x' />{props.numberOfPets}</span>
-            <span className='spanTypeOfPets'>{props.typeOfPets.length > 1 ? props.typeOfPets.join(' | ') : props.typeOfPets}</span>
+            <span className='spanNumberOfPets'><Icon icon='paw' size='1x' />{props.numberOfAnimals}</span>
+            <span className='spanTypeOfPets'>{props.typeOfAnimals}</span>
             <span className='spanClose'><Icon icon='times' size='1x'/></span>
         </div>
     );

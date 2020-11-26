@@ -73,7 +73,7 @@ export const login = async (req, res, next) => {
             userId: user[0].id
         },
         process.env.TOKEN_SECRET_WORD,
-        {expiresIn: '1h'});
+        {expiresIn: '5h'});
 
         return res.status(200).json({
             message: 'Login successful',

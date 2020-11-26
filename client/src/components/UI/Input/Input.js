@@ -10,7 +10,7 @@ const input = props => {
             return <input className={styles.Input} style={props.style} {...props.config} value={props.value} onChange={props.action} />;
         case 'select':
             return (
-                <select className={styles.Select} style={props.style} {...props.config}>
+                <select className={styles.Select} style={props.style} {...props.config} onChange={props.action}>
                     {props.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
             );
@@ -19,7 +19,7 @@ const input = props => {
                 <DatePicker {...props.config} selected={props.value} className={props.className} onChange={props.action} />
             );
         case 'textarea':
-            return <textarea className={styles.Textarea}>{props.value}</textarea>;
+            return <textarea className={styles.Textarea} {...props.config} onChange={props.action}>{props.value}</textarea>;
         case 'checkbox':
             return <input {...props.config} value={props.value} onChange={props.action} />
         default: return null;

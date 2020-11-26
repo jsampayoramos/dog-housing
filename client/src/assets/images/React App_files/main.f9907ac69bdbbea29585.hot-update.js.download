@@ -1,0 +1,478 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/Pages/NewProperty/NewProperty.js":
+/*!**********************************************!*\
+  !*** ./src/Pages/NewProperty/NewProperty.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(__react_refresh_utils__, __react_refresh_error_overlay__) {/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "../node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "../node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "../node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_UI_Button_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/UI/Button/Button */ "./src/components/UI/Button/Button.js");
+/* harmony import */ var _components_UI_Input_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/UI/Input/Input */ "./src/components/UI/Input/Input.js");
+/* harmony import */ var _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NewProperty.module.css */ "./src/Pages/NewProperty/NewProperty.module.css");
+/* harmony import */ var _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7__);
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! react-refresh/runtime */ "./node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.i);
+
+
+
+var _jsxFileName = "C:\\Documentos\\Pessoal\\Projectos\\Projectos\\dog-housing\\client\\src\\Pages\\NewProperty\\NewProperty.js",
+    _s = __webpack_require__.$Refresh$.signature();
+
+
+
+
+
+
+
+
+
+const NewProperty = props => {
+  _s();
+
+  const [form, setForm] = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    address: {
+      label: 'Morada',
+      type: 'input',
+      config: {
+        // required: true,
+        name: 'address',
+        type: 'text'
+      },
+      value: ''
+    },
+    location: {
+      label: 'Concelho',
+      type: 'select',
+      config: {
+        // required: true,
+        name: 'location',
+        defaultValue: 'Lisboa'
+      },
+      options: ['Lisboa', 'Porto', 'Faro'],
+      value: 'Lisboa'
+    },
+    floorAndDoor: {
+      label: 'Andar e Porta',
+      type: 'input',
+      config: {
+        // required: true,
+        name: 'floorAndDoor',
+        type: 'text'
+      },
+      value: ''
+    },
+    numberOfAnimals: {
+      label: '# of Pets',
+      type: 'input',
+      config: {
+        // required: true,
+        name: 'numberOfAnimals',
+        type: 'number'
+      },
+      value: ''
+    },
+    typeOfAnimals: {
+      label: 'Pets accepted',
+      type: 'select',
+      config: {
+        name: 'typeOfAnimals',
+        // required: true,
+        defaultValue: 'Cão'
+      },
+      options: ['Cão', 'Gato', 'Cão e gato'],
+      value: 'Cão'
+    },
+    typeOfProperty: {
+      label: 'Tipo de propriedade',
+      type: 'select',
+      config: {
+        name: 'typeOfProperty',
+        // required: true,
+        defaultValue: 'Apartamento'
+      },
+      options: ['Apartamento', 'Moradia', 'Quinta', 'Hotel para cães'],
+      value: 'Apartamento'
+    },
+    description: {
+      label: 'Descrição',
+      type: 'textarea',
+      config: {
+        // required: true,
+        name: 'description'
+      },
+      value: ''
+    }
+  });
+  const [checkBoxForm, setCheckBoxForm] = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    walks: {
+      label: 'Passeios diários',
+      type: 'checkbox',
+      config: {
+        type: 'checkbox',
+        name: 'ameneties'
+      },
+      value: 'Passeios diários'
+    },
+    balcony: {
+      label: 'Jardim/Terraço',
+      type: 'checkbox',
+      config: {
+        type: 'checkbox',
+        name: 'ameneties'
+      },
+      value: 'Jardim/Terraço'
+    }
+  });
+  const [checkedOptions, setCheckedOptions] = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]);
+  const [uploadImage, setUploadImage] = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    image: {
+      label: 'Upload imagens',
+      type: 'input',
+      config: {
+        // required: true,
+        type: 'file',
+        name: 'image'
+      },
+      value: ''
+    }
+  });
+  const [imagesUploaded, setImagesUploaded] = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]);
+  const token = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.auth.token);
+
+  const setFormValues = event => {
+    const {
+      name,
+      value
+    } = event.target;
+    setForm({ ...form,
+      [name]: { ...form[name],
+        value: value
+      }
+    });
+  };
+
+  const formArray = Object.keys(form).map(el => {
+    if (el !== 'description') {
+      return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("label", {
+          children: form[el].label
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 143,
+          columnNumber: 21
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Input_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          style: {
+            marginBottom: '10px'
+          },
+          action: setFormValues,
+          elementType: form[el].type,
+          config: form[el].config,
+          value: form[el].value,
+          options: form[el].type === 'select' ? form[el].options : null
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 144,
+          columnNumber: 21
+        }, undefined)]
+      }, void 0, true, {
+        fileName: _jsxFileName,
+        lineNumber: 142,
+        columnNumber: 17
+      }, undefined);
+    }
+
+    ;
+  });
+
+  const setChecked = event => {
+    let checkedOptionsCopy = [...checkedOptions];
+    const index = checkedOptionsCopy.indexOf(event.target.value);
+
+    if (index === -1) {
+      checkedOptionsCopy = [...checkedOptionsCopy, event.target.value];
+    } else {
+      checkedOptionsCopy.splice(index, 1);
+    }
+
+    ;
+    setCheckedOptions(checkedOptionsCopy);
+  };
+
+  const checkBoxArray = Object.keys(checkBoxForm).map(key => {
+    return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+      className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.CheckBoxUnitContainer,
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("label", {
+        children: checkBoxForm[key].label
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 173,
+        columnNumber: 17
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Input_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        elementType: checkBoxForm[key].type,
+        config: checkBoxForm[key].config,
+        value: checkBoxForm[key].value,
+        action: setChecked
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 174,
+        columnNumber: 17
+      }, undefined)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 172,
+      columnNumber: 13
+    }, undefined);
+  });
+
+  const fileUploadAction = event => {
+    event.preventDefault();
+    setImagesUploaded([...imagesUploaded, event.target.files[0]]);
+  };
+
+  const uploadImageArray = Object.keys(uploadImage).map(key => {
+    return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+      className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.ImageContainer,
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("label", {
+        children: uploadImage[key].label
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 187,
+        columnNumber: 17
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Input_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        elementType: uploadImage[key].type,
+        config: uploadImage[key].config,
+        action: fileUploadAction
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 188,
+        columnNumber: 17
+      }, undefined)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 186,
+      columnNumber: 13
+    }, undefined);
+  });
+
+  const onSubmit = async event => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    for (let key in form) {
+      formData.append(key, form[key].value);
+    }
+
+    ;
+    formData.append('checkedOptions', checkedOptions);
+    imagesUploaded.forEach(img => formData.append('image', img));
+
+    try {
+      let response = await axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/listings/newlisting', formData, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(imagesUploaded);
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("section", {
+    className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.NewProperty,
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("h3", {
+      children: "Adicionar propriedade"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 213,
+      columnNumber: 13
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("hr", {}, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 214,
+      columnNumber: 13
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("form", {
+      onSubmit: onSubmit,
+      children: [formArray, /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+        className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.CheckBoxContainer,
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("h3", {
+          children: "Servi\xE7os"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 218,
+          columnNumber: 21
+        }, undefined), checkBoxArray]
+      }, void 0, true, {
+        fileName: _jsxFileName,
+        lineNumber: 217,
+        columnNumber: 17
+      }, undefined), uploadImageArray, /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+        className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.ImagesUploaded,
+        children: imagesUploaded.map(img => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("span", {
+          children: img.name
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 223,
+          columnNumber: 48
+        }, undefined))
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 222,
+        columnNumber: 17
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("label", {
+        children: form.description.label
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 225,
+        columnNumber: 17
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Input_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        style: {
+          marginBottom: '10px'
+        },
+        action: setFormValues,
+        elementType: form.description.type,
+        config: form.description.config,
+        value: form.description.value
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 226,
+        columnNumber: 17
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+        className: _NewProperty_module_css__WEBPACK_IMPORTED_MODULE_7___default.a.ButtonContainer,
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "/listings",
+            children: "Cancelar"
+          }, void 0, false, {
+            fileName: _jsxFileName,
+            lineNumber: 236,
+            columnNumber: 29
+          }, undefined)
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 236,
+          columnNumber: 21
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(_components_UI_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          children: "Adicionar"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 237,
+          columnNumber: 21
+        }, undefined)]
+      }, void 0, true, {
+        fileName: _jsxFileName,
+        lineNumber: 235,
+        columnNumber: 17
+      }, undefined)]
+    }, void 0, true, {
+      fileName: _jsxFileName,
+      lineNumber: 215,
+      columnNumber: 13
+    }, undefined)]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 212,
+    columnNumber: 9
+  }, undefined);
+};
+
+_s(NewProperty, "Tht7m+HZcqXBDDf6XpihlTmO7iM=", false, function () {
+  return [react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"]];
+});
+
+_c = NewProperty;
+/* harmony default export */ __webpack_exports__["default"] = (NewProperty);
+
+var _c;
+
+__webpack_require__.$Refresh$.register(_c, "NewProperty");
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.i);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.i);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.i].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js"), __webpack_require__(/*! ./node_modules/react-dev-utils/refreshOverlayInterop.js */ "./node_modules/react-dev-utils/refreshOverlayInterop.js")))
+
+/***/ })
+
+})
+//# sourceMappingURL=main.f9907ac69bdbbea29585.hot-update.js.map

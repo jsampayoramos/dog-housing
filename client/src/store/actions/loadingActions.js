@@ -1,5 +1,7 @@
 import * as actionTypes from './actionsType';
 
-export const toggleLoading = {
-    type: actionTypes.TOGGLE_LOADING
+export const toggleLoading = () => {
+    return {
+        type: actionTypes.TOGGLE_LOADING
+    }
 };

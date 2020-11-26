@@ -6,3 +6,5 @@ export const ADD_ERROR = 'ADD_ERROR';
 export const DELETE_ERROR = 'DELETE_ERROR';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const ADD_CHECKINS = 'ADD_CHECKINS';
+export const ADD_NEW_LISTING = 'ADD_NEW_LISTING';
+export const GET_USER_LISTINGS = 'GET_USER_LISTINGS';

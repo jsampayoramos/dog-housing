@@ -1,5 +1,4 @@
 import express from 'express';
-
 import bodyAPIs from 'express-validator';
 
 import * as authControler from '../controllers/auth.js';

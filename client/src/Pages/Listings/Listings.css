@@ -60,6 +60,7 @@
 
     .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
         margin-top: 5px;
+        justify-content: space-between;
     }
 
     .spanListingImage {
