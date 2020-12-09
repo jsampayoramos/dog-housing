@@ -13,3 +13,10 @@ export const getAllListings = (listings) => {
         payload: listings
     }
 }
+
+export const deleteListing = id => {
+    return {
+        type: actionType.DELETE_LISTING,
+        payload: id
+    };
+};

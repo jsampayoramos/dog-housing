@@ -71,4 +71,6 @@ router.post(
 
 router.get('/getuserlistings', isAuth, listingsController.getUserListing);
 
+router.delete('/deleteListing' , isAuth, listingsController.deleteListing);
+
 export default router;

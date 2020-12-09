@@ -14,7 +14,7 @@ const listing = props => {
             <span className='spanStatus'>{props.status}</span>
             <span className='spanNumberOfPets'><Icon icon='paw' size='1x' />{props.numberOfAnimals}</span>
             <span className='spanTypeOfPets'>{props.typeOfAnimals}</span>
-            <span className='spanClose'><Icon icon='times' size='1x'/></span>
+            <span className='spanClose'><Icon icon='pen' size='1x' action={props.editAction}/><Icon icon='times' size='1x' action={props.deleteAction}/></span>
         </div>
     );
 };

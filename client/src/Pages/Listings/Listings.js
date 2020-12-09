@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import Button from '../../components/UI/Button/Button';
@@ -14,9 +14,10 @@ import './Listings.css';
 const Listings = props => {  
     const listings = useSelector(state => state.listings);
     const token = useSelector(state => state.auth.token);
+    const history = useHistory();
     const dispatch = useDispatch();
    
-    useEffect(() => {
+    useEffect(() => { 
         dispatch(loadingActions.toggleLoading());
         const configRequest = {
             headers: {Authorization: 'Bearer ' + token},
@@ -35,14 +36,40 @@ const Listings = props => {
         getListings();
     }, [token, dispatch]);
 
+    const deleteListing = async (id) => {
+        dispatch(loadingActions.toggleLoading());
+        const config = {
+            headers: {Authorization: 'Bearer ' + token},
+            params: { id }
+        };
+
+        dispatch(listingsActions.deleteListing(id));
+
+        try {
+            await axios.delete('/listings/deletelisting', config);
+            dispatch(listingsActions.deleteListing(id));
+            dispatch(loadingActions.toggleLoading());
+        } catch (error) {
+            dispatch(loadingActions.toggleLoading());
+        }
+    };
+
     const listingsArray = listings.map(listing => {
         return (
             <Listing
                 key={listing.address} 
                 {...listing}
+                deleteAction={() => deleteListing(listing.id)}
+                editAction={() => editListing(listing.id)}
             />
         );
     });
+
+    const editListing = id => {
+        history.push({
+            pathname: `/listings/newproperty/${id}`,
+        });
+    };
 
     return (
         <section className={styles.Listings} >

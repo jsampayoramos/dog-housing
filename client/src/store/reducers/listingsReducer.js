@@ -10,7 +10,9 @@ const listingsReducer = (state = initialState, action) => {
             return [
                 ...state,
                 action.payload
-            ]
+            ];
+        case actionTypes.DELETE_LISTING:
+            return state.filter(list => list.id !== action.payload);
         default: return state;
     };
 };

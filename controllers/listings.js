@@ -57,7 +57,6 @@ export const newListing = async (req, res, next) => {
 };
 
 export const getUserListing = async (req, res, next) => {
-    
     try {
         const listings = await Listing.findAll({where: {userId: req.userId}});
         return res.status(200).json({
@@ -65,9 +64,35 @@ export const getUserListing = async (req, res, next) => {
             listings
         })
     } catch (error) {
-        console.log(error);
+        error.statusCode = error.statusCode || 500;
+        next(error);
     }
     
+}
+
+export const deleteListing = async (req, res, next) => {
+    const id = req.query.id;
+    
+    try {
+        const listing = await Listing.findOne({ where: {id} });
+
+        if(listing.userId !== req.userId) {
+            const error = new Error('Listing does not belong this user');
+            error.statusCode = 401;
+            throw error;
+        };
+
+        const deletedListing = await listing.destroy();
+
+        return res.status(200).json({
+            message: 'Listing deleted successfully',
+            listing: deletedListing
+        });
+
+    } catch (error) {
+        error.statusCode = error.statusCode || 500;
+        next(error);
+    }
 }
 
 const clearImage = filePath => {

@@ -29,7 +29,8 @@ const App = props => {
 
   let authComponents = (
     <React.Fragment>
-      <Route path='/listings/newproperty' component={NewProperty} />
+      <Route exact path='/listings/newproperty' component={NewProperty} />
+      <Route exact path='/listings/newproperty/:id' component={NewProperty} />
       <Route path='/dashboard' component={Dashboard} />
       <Route exact path='/listings' component={Listings} />
     </React.Fragment>

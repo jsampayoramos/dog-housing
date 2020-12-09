@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
@@ -124,6 +124,22 @@ const NewProperty = props => {
     });
 
     const [ imagesUploaded, setImagesUploaded] = useState([]);
+
+    const listings = useSelector(state => state.listings);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const listing = listings.find(list => list.id === parseInt(id));
+        if(form.address.value === '') {
+            const formCopy = {...form};
+            for(let item in formCopy) {
+                formCopy[item].value = listing[item];
+            }
+            setForm(formCopy);
+        };
+        console.log(listing);
+
+    }, [form, id, listings]);
 
     const token = useSelector(state => state.auth.token);
     const dispatch = useDispatch();
