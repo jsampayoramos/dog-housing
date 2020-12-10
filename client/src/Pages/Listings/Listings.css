@@ -1,8 +1,18 @@
-.spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets, .spanClose {
+.spanPropertyType,
+.spanStatus,
+.spanNumberOfPets,
+.spanTypeOfPets {
     display: block;
     width: 11%;
     padding: 0 5px;
     text-align: center;
+}
+
+.spanClose {
+    display: flex;
+    width: 11%;
+    padding: 0 5px;
+    justify-content: flex-end;
 }
 
 .spanClose svg {
@@ -16,16 +26,34 @@
 }
 
 .spanListingImage {
-    display: block;
-    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
-.spanListingImage img {
-    width: 100%;
+.spanListingImageHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
 .spanNumberOfPets svg {
     display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+    .spanAddress {
+        width: 32%;
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -39,7 +67,10 @@
         width: auto;
     }
 
-    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+    .spanPropertyType,
+    .spanStatus,
+    .spanNumberOfPets,
+    .spanTypeOfPets {
         order: 2;
         width: 25%;
         margin-top: 15px;
@@ -53,7 +84,6 @@
         display: inline;
         margin-right: 5px;
     }
-
 }
 
 @media only screen and (max-width: 500px) {
@@ -63,7 +93,10 @@
         text-align: center;
     }
 
-    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+    .spanPropertyType,
+    .spanStatus,
+    .spanNumberOfPets,
+    .spanTypeOfPets {
         margin-top: 5px;
         justify-content: space-between;
     }
@@ -79,7 +112,10 @@
 }
 
 @media only screen and (max-width: 400px) {
-    .spanPropertyType, .spanStatus, .spanNumberOfPets, .spanTypeOfPets {
+    .spanPropertyType,
+    .spanStatus,
+    .spanNumberOfPets,
+    .spanTypeOfPets {
         width: 100%;
     }
 }
