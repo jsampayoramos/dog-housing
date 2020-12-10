@@ -5,5 +5,7 @@ nodemon.json
 
 images/*
 
+!images/text.txt
+
 debug.log
 Procfile
