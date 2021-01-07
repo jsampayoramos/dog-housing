@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import useHttp from "../../hooks/useHttp";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
-import * as listingsActions from "../../store/actions/listingsActions";
 import * as loadingActions from "../../store/actions/loadingActions";
+import * as errorActions from "../../store/actions/errorActions";
 
 import styles from "./NewProperty.module.css";
 
 const NewProperty = (props) => {
-    const { sendRequest, initializeState } = useHttp();
+    const { sendRequest, initializeState, error } = useHttp();
+    const token = useSelector((state) => state.auth.token);
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [form, setForm] = useState({
         address: {
             label: "Morada",
@@ -154,12 +156,23 @@ const NewProperty = (props) => {
                 };
             });
         }
-    }, [form, id, listings]);
+    }, [form, id, listings, initializeState]);
 
-    const token = useSelector((state) => state.auth.token);
-    const dispatch = useDispatch();
-    const history = useHistory();
+    useEffect(() => {
+        return () => {
+            initializeState();
+        };
+    }, [initializeState]);
 
+    useEffect(() => {
+        if (error)
+            dispatch(
+                errorActions.setError(
+                    "Não foi possível adicionar o alojamento."
+                )
+            );
+    }, [dispatch, error]);
+    
     const setFormValues = (event) => {
         const { name, value } = event.target;
         setForm({
@@ -218,7 +231,7 @@ const NewProperty = (props) => {
 
     const checkBoxArray = Object.keys(checkBoxForm).map((key) => {
         return (
-            <div className={styles.CheckBoxUnitContainer}>
+            <div className={styles.CheckBoxUnitContainer} key={key}>
                 <label>{checkBoxForm[key].label}</label>
                 <Input
                     elementType={checkBoxForm[key].type}
@@ -265,7 +278,6 @@ const NewProperty = (props) => {
 
         await sendRequest("/listings/newlisting", formData, "post", token);
         dispatch(loadingActions.toggleLoading());
-        initializeState();
         history.push("/listings");
     };
 
@@ -287,7 +299,6 @@ const NewProperty = (props) => {
             listId
         );
         dispatch(loadingActions.toggleLoading());
-        initializeState();
         history.push("/listings");
     };
 

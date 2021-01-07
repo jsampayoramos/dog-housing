@@ -46,7 +46,7 @@ const useHttp = () => {
         } catch (err) {
             dispatch({
                 type: "REQUEST_FAILED",
-                payload: err.response.data.message,
+                payload: err.response.statusText,
                 id,
             });
         }

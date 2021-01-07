@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +6,7 @@ import axios from "axios";
 import useHttp from "../../hooks/useHttp";
 import Button from "../../components/UI/Button/Button";
 import Listing from "./Listing/Listing";
+import ListingPrices from "../../components/ListingPrices/ListingPrices";
 import * as listingsActions from "../../store/actions/listingsActions";
 import * as loadingActions from "../../store/actions/loadingActions";
 
@@ -13,6 +14,7 @@ import styles from "./Listings.module.css";
 import "./Listings.css";
 
 const Listings = (props) => {
+    const [prices, setPrices] = useState(false);
     const listings = useSelector((state) => state.listings);
     const token = useSelector((state) => state.auth.token);
     const loading = useSelector((state) => state.loading);
@@ -61,6 +63,7 @@ const Listings = (props) => {
                 {...listing}
                 deleteAction={() => deleteListing(listing.id)}
                 editAction={() => editListing(listing.id)}
+                addPrices={() => setPrices(true)}
             />
         );
     });
@@ -73,6 +76,7 @@ const Listings = (props) => {
 
     return (
         <section className={styles.Listings}>
+            {prices ? <ListingPrices cancel={() => setPrices(false)} /> : null}
             <div>
                 <h3>As tuas propriedades</h3>
                 <Button>

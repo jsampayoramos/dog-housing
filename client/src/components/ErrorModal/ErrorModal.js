@@ -1,20 +1,25 @@
-import React from 'react';
+import React from "react";
+import { useDispatch } from "react-redux";
 
-import Button from '../UI/Button/Button';
+import Button from "../UI/Button/Button";
+import * as errorActions from "../../store/actions/errorActions";
 
-import styles from './ErrorModal.module.css';
+import styles from "./ErrorModal.module.css";
 
-const errorModal = props => {
+const ErrorModal = ({ message }) => {
+    const dispatch = useDispatch();
     return (
         <div className={styles.ErrorModal}>
             <div className={styles.ErrorMessage}>
-                <h3>Alguma coisa correr mal</h3>
+                <h3>Alguma coisa correu mal</h3>
                 <hr />
-                <p>ajsjansajnsjnsa sjsnjsanjsajnsnjanjas asjnasjnsajnsjnsjnsna asjnajnsjnsajnsajnasjnsa jnsajsanjsajnsajnsajnsa</p>
-                <Button>Fechar</Button>
+                <p>{message}</p>
+                <Button action={() => dispatch(errorActions.deleteError())}>
+                    Fechar
+                </Button>
             </div>
         </div>
     );
 };
 
-export default errorModal;
+export default ErrorModal;

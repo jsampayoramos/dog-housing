@@ -1,18 +1,18 @@
-import Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-import sequelize from '../util/database.js';
+import sequelize from "../util/database.js";
 
-const Listing = sequelize.define('listing', {
+const Listing = sequelize.define("listing", {
     id: {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
     },
     location: {
         type: Sequelize.ENUM,
         allowNull: false,
-        values: ['Lisboa', 'Porto', 'Faro']
+        values: ["Lisboa", "Porto", "Faro"],
     },
     address: {
         type: Sequelize.STRING,
@@ -20,52 +20,55 @@ const Listing = sequelize.define('listing', {
     },
     floorAndDoor: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
     },
     numberOfAnimals: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
     },
     typeOfAnimals: {
         type: Sequelize.ENUM,
         allowNull: false,
-        values: ['Cão', 'Gato', 'Cães e gatos']
+        values: ["Cão", "Gato", "Cães e gatos"],
     },
     typeOfProperty: {
         type: Sequelize.ENUM,
         allowNull: false,
-        values: ['Apartamento', 'Moradia', 'Quinta', 'Hotel para cães']
+        values: ["Apartamento", "Moradia", "Quinta", "Hotel para cães"],
     },
     imageString: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
     },
     servicesString: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
     },
     description: {
         type: Sequelize.TEXT,
-        allowNull: false   
+        allowNull: false,
+    },
+    overalPrice: {
+        type: Sequelize.FLOAT,
     },
     services: {
         type: Sequelize.VIRTUAL,
         get() {
-            return this.servicesString.split('_')
+            return this.servicesString.split("_");
         },
         set(value) {
-            throw new Error('Cannot set services');
-        }
+            throw new Error("Cannot set services");
+        },
     },
     image: {
         type: Sequelize.VIRTUAL,
         get() {
-            return this.imageString.split(' ')
+            return this.imageString.split(" ");
         },
         set(value) {
-            throw new Error('Cannot set image URL');
-        }
-    }
+            throw new Error("Cannot set image URL");
+        },
+    },
 });
 
 export default Listing;

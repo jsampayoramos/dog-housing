@@ -1,17 +1,34 @@
 import React from "react";
 
+import { useHistory } from "react-router-dom";
+
 import Icon from "../../../components/UI/Icon/Icon";
+import Button from "../../../components/UI/Button/Button";
 
 import styles from "./Listing.module.css";
 
-const listing = (props) => {
+const Listing = (props) => {
+    const history = useHistory();
+    const addPrices = () => {
+        props.addPrices();
+        history.push({
+            pathname: `/listings/${props.id}`,
+        });
+    };
+
     return (
         <div className={styles.Listing}>
             <span
                 className="spanListingImage"
                 style={{ backgroundImage: `url(${props.image[0]})` }}
             ></span>
-            <span className="spanAddress">{props.address}</span>
+            <div className="spanAddressContainer">
+                <span className="spanName">Cantinho da Maria</span>
+                <div>
+                    <Icon icon="map-marker-alt" size="1x" />
+                    <span className="spanAddressLocation">{props.address}</span>
+                </div>
+            </div>
             <span className="spanPropertyType">{props.typeOfProperty}</span>
             <span className="spanStatus">{props.status}</span>
             <span className="spanNumberOfPets">
@@ -20,11 +37,14 @@ const listing = (props) => {
             </span>
             <span className="spanTypeOfPets">{props.typeOfAnimals}</span>
             <span className="spanClose">
-                <Icon icon="pen" size="1x" action={props.editAction} />
-                <Icon icon="times" size="1x" action={props.deleteAction} />
+                <div>
+                    <Icon icon="pen" size="1x" action={props.editAction} />
+                    <Icon icon="times" size="1x" action={props.deleteAction} />
+                </div>
+                <Button action={addPrices}>Prices</Button>
             </span>
         </div>
     );
 };
 
-export default listing;
+export default Listing;

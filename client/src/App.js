@@ -37,6 +37,7 @@ const App = (props) => {
             />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/listings" component={Listings} />
+            <Route path="/listings/:id" component={Listings} />
         </React.Fragment>
     );
 
@@ -53,7 +54,7 @@ const App = (props) => {
                 {authComponents}
                 <Route path="/" component={LandingPage} />
             </Switch>
-            {error.status ? <ErrorModal message={error.message} /> : null}
+            {error.message ? <ErrorModal message={error.message} /> : null}
             {loading ? <Spinner /> : null}
         </Layout>
     );

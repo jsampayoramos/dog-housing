@@ -147,6 +147,10 @@ export const editListing = async (req, res, next) => {
     }
 };
 
+export const addPrices = async (req, res, next) => {
+    console.log(req.body);
+};
+
 const clearImage = (filePath) => {
     filePath = path.join(__dirname, "..", filePath);
     fs.unlink(filePath, (err) => {

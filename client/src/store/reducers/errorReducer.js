@@ -1,24 +1,21 @@
-import * as actionTypes from '../actions/actionsType';
+import * as actionTypes from "../actions/actionsType";
 
 const initialState = {
-    status: false,
-    message: ''
+    message: "",
 };
 
 const errorReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case actionTypes.ADD_ERROR:
             return {
-                status: true,
-                message: action.payload
+                ...state,
+                message: action.payload,
             };
-        case actionTypes.DELETE_ERROR:
-            return {
-                status: false,
-                message: ''
-            };
-        default: return state;
-    };
+        case actionTypes.INITIALIZE_ERROR:
+            return initialState;
+        default:
+            return state;
+    }
 };
 
 export default errorReducer;

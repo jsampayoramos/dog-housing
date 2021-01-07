@@ -13,6 +13,7 @@ import listingsRoutes from "./routes/listings.js";
 
 import User from "./models/user.js";
 import Listing from "./models/listing.js";
+import SpecificPrice from "./models/specificPrice.js";
 
 const app = express();
 
@@ -82,6 +83,8 @@ if (process.env.NODE_ENV === "production") {
 
 Listing.belongsTo(User);
 User.hasMany(Listing);
+SpecificPrice.belongsTo(Listing);
+Listing.hasMany(SpecificPrice);
 
 sequelize
     .sync()

@@ -4,7 +4,7 @@
     padding: 20px;
 }
 
-.Listings div:first-child {
+.Listings > div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,7 +27,8 @@
     padding: 0;
 }
 
-.Listings a:link, .Listings a:visited {
+.Listings a:link,
+.Listings a:visited {
     text-decoration: none;
     color: white;
 }
@@ -47,7 +48,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .Listings hr {
+    .Listings > hr {
         display: none;
     }
 
@@ -55,18 +56,18 @@
         display: none;
     }
 
-    .Listings div:first-child {
+    .Listings > div:first-child {
         margin-bottom: 20px;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .Listings div:first-child {
+    .Listings > div:first-child {
         flex-direction: column;
         margin-bottom: 0;
     }
 
-    .Listings button {
+    .Listings > button {
         margin: 10px 0;
     }
 }

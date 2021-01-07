@@ -1,64 +1,64 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
-import * as authActions from '../../store/actions/authActions';
-import * as loadingActions from '../../store/actions/loadingActions';
+import Input from "../../components/UI/Input/Input";
+import Button from "../../components/UI/Button/Button";
+import * as authActions from "../../store/actions/authActions";
+import * as loadingActions from "../../store/actions/loadingActions";
 
-import styles from './Login.module.css';
+import styles from "./Login.module.css";
 
-const Login = props => {
+const Login = (props) => {
     const [loginData, setLoginData] = useState({
         email: {
-            label: 'E-mail',
-            type: 'input',
+            label: "E-mail",
+            type: "input",
             config: {
-                type: 'email',
+                type: "email",
                 required: true,
-                name: 'email'
+                name: "email",
             },
-            value: ''
+            value: "",
         },
         password: {
-            label: 'Password',
-            type: 'input',
+            label: "Password",
+            type: "input",
             config: {
-                type: 'password',
+                type: "password",
                 required: true,
-                name: 'password'
+                name: "password",
             },
-            value: ''
-        }
+            value: "",
+        },
     });
 
-    const [ errorState, setError ] = useState({
+    const [errorState, setError] = useState({
         status: false,
-        message: ''
-    })
+        message: "",
+    });
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const setFormValues = (event) => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
 
         setLoginData({
             ...loginData,
             [name]: {
                 ...loginData[name],
-                value: value
-            }
+                value: value,
+            },
         });
     };
 
-    const loginForm = Object.keys(loginData).map(el => {
+    const loginForm = Object.keys(loginData).map((el) => {
         return (
             <div key={el} className={styles.InputContainer}>
                 <label>{loginData[el].label}</label>
-                <Input 
+                <Input
                     elementType={loginData[el].type}
                     config={loginData[el].config}
                     value={loginData[el].value}
@@ -70,34 +70,35 @@ const Login = props => {
 
     const submitLogin = async (event) => {
         event.preventDefault();
-        dispatch(loadingActions.toggleLoading);
+        dispatch(loadingActions.toggleLoading());
         const data = {
             email: loginData.email.value,
-            password: loginData.password.value
+            password: loginData.password.value,
         };
-        
+
         try {
             const response = await axios({
-                method: 'POST',
-                url: '/auth/login',
-                data
-            })
-            dispatch(loadingActions.toggleLoading);
-            dispatch(authActions.login({
-                token: response.data.token,
-                userId: response.data.userId
-            }))
+                method: "POST",
+                url: "/auth/login",
+                data,
+            });
+            dispatch(loadingActions.toggleLoading());
+            dispatch(
+                authActions.login({
+                    token: response.data.token,
+                    userId: response.data.userId,
+                })
+            );
             setError({
                 status: false,
-                message: ''
+                message: "",
             });
-            history.push('./dashboard');
-
-        } catch(err) {
-            dispatch(loadingActions.toggleLoading);
+            history.push("./dashboard");
+        } catch (err) {
+            dispatch(loadingActions.toggleLoading());
             setError({
                 status: true,
-                message: err.response.data.message
+                message: err.response.data.message,
             });
         }
     };
@@ -109,7 +110,9 @@ const Login = props => {
                 <hr />
                 {loginForm}
                 <p>Não te lembras da palavra pass? Carregue aqui.</p>
-                {errorState.status ? <p className={styles.ErrorMessage}>{errorState.message}</p> : null}
+                {errorState.status ? (
+                    <p className={styles.ErrorMessage}>{errorState.message}</p>
+                ) : null}
                 <Button>LOGIN</Button>
             </form>
         </section>

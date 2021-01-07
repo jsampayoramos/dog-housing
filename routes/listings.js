@@ -72,4 +72,6 @@ router.delete("/deleteListing", isAuth, listingsController.deleteListing);
 
 router.put("/editlisting/", isAuth, listingsController.editListing);
 
+router.post("/addprices", isAuth, listingsController.addPrices);
+
 export default router;

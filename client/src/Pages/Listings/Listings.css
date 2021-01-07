@@ -6,6 +6,7 @@
     width: 11%;
     padding: 0 5px;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .spanClose {
@@ -19,10 +20,42 @@
     margin: 0 5px;
 }
 
+.spanClose {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.spanClose > div {
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+.spanClose button {
+    height: 30px;
+}
+
+.spanAddressContainer,
 .spanAddress {
     display: block;
     width: 35%;
     padding: 0 5px;
+}
+
+.spanAddressLocation {
+    display: block;
+    width: 100%;
+    padding: 0 5px;
+    font-size: 0.9rem;
+}
+
+.spanAddressContainer > div {
+    display: flex;
+    align-items: center;
+}
+
+.spanName {
+    font-weight: 500;
 }
 
 .spanListingImage {
@@ -51,12 +84,14 @@
 }
 
 @media only screen and (max-width: 1100px) {
+    .spanAddressContainer,
     .spanAddress {
         width: 32%;
     }
 }
 
 @media only screen and (max-width: 900px) {
+    .spanAddressContainer,
     .spanAddress {
         width: 63%;
     }
@@ -87,10 +122,20 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .spanAddressContainer,
     .spanAddress {
         width: 100%;
         order: 2;
         text-align: center;
+    }
+
+    .spanAddressContainer > div {
+        margin: auto;
+        justify-content: center;
+    }
+
+    .spanAddressLocation {
+        width: auto;
     }
 
     .spanPropertyType,
